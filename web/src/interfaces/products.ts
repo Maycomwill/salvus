@@ -5,3 +5,9 @@ export interface Product {
   price: number;
   created_at: string;
 }
+
+export interface ProductCreateSchema {
+  name: string;
+  description: string;
+  price: string;
+}

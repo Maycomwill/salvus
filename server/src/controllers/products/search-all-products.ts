@@ -4,7 +4,7 @@ import { Request, Response } from "express";
 
 export default async function searchAllProducts(req: Request, res: Response) {
   const pool = new Pool(connection);
-  const query = "SELECT * FROM products";
+  const query = "SELECT * FROM products ORDER BY created_at DESC";
   try {
     pool.query(query, (error, result) => {
       if (error) {
