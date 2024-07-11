@@ -1,6 +1,5 @@
 import { Router } from "express";
 import bodyParser from "body-parser";
-import z from "zod";
 
 import searchAllProducts from "./search-all-products";
 import createNewProduct from "./create-new-product";

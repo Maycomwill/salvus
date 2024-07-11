@@ -6,7 +6,7 @@ const productTable = `CREATE TABLE IF NOT EXISTS products (
     name VARCHAR(255) NOT NULL,
     description TEXT,
     price DECIMAL(10, 2) NOT NULL,
-    image VARCHAR(255)
+    created_at TIMESTAMP
 );`;
 
 const userTable = `CREATE TABLE IF NOT EXISTS users (

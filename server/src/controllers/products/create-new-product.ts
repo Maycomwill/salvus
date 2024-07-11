@@ -10,12 +10,17 @@ export default async function createNewProduct(req: Request, res: Response) {
     name: z.string(),
     description: z.string().optional(),
     price: z.number(),
-    image: z.string().optional(),
   });
-  const { name, description, price, image } = bodySchema.parse(req.body);
+  const { name, description, price } = bodySchema.parse(req.body);
   try {
     const id = uuidv4();
-    const query = `INSERT INTO products (id, name, description, price, image) VALUES ('${id}', '${name}', '${description}', '${price}', '${image}')`;
+    const created_at = new Date();
+    console.log(created_at);
+    const query = {
+      name: "create prodcut",
+      text: "INSERT INTO products (id, name, description, price, created_at) VALUES ($1, $2, $3, $4, $5)",
+      values: [id, name, description, price, created_at],
+    };
     pool.query(query, (error, result) => {
       if (error) {
         return res.status(500).send({ message: error.message, data: error });
