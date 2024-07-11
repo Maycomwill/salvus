@@ -11,7 +11,7 @@ export default async function searchAllProducts(req: Request, res: Response) {
         return res.status(500).send({ message: error.message, data: error });
       }
       console.log(result.rows);
-      return res.status(200).send({ message: result.rows, data: result });
+      return res.status(200).send({ message: "ok", data: result.rows });
     });
   } catch (error) {
     if (error instanceof Error) {
