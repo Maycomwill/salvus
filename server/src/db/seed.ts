@@ -9,16 +9,9 @@ const productTable = `CREATE TABLE IF NOT EXISTS products (
     created_at TIMESTAMP
 );`;
 
-const userTable = `CREATE TABLE IF NOT EXISTS users (
-    id VARCHAR(255) PRIMARY KEY,
-    name VARCHAR(255) NOT NULL,
-    email VARCHAR(255) NOT NULL UNIQUE,
-    password VARCHAR(255) NOT NULL
-);`;
-
 async function Seed() {
   const pool = new Pool(connection);
-  const queries = [productTable, userTable];
+  const queries = [productTable];
   queries.forEach(async (query) => {
     pool.query(query);
   });
