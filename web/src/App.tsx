@@ -23,11 +23,11 @@ function App() {
   return (
     <div className="h-screen flex flex-col  items-center justify-center pt-24 gap-12">
       <h1 className="text-4xl font-bold tracking-widest">Product API</h1>
+      <NewProduct />
       {isLoading ? (
         <Loading />
       ) : (
         <>
-          <NewProduct />
           <div className="w-2/3 flex-1">
             <Table>
               <TableHeader>
@@ -49,7 +49,6 @@ function App() {
                         <TableCell>{product.name}</TableCell>
                         <TableCell>{product.description}</TableCell>
                         <TableCell>
-                          R$
                           {product.price.toLocaleString("pt-BR", {
                             style: "currency",
                             currency: "BRL",
