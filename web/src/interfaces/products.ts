@@ -6,7 +6,7 @@ export interface Product {
   created_at: string;
 }
 
-export interface ProductCreateSchema {
+export interface ProductSchema {
   name: string;
   description: string;
   price: string;

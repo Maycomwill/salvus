@@ -17,10 +17,8 @@ function NewProduct() {
   }
   return (
     <Dialog>
-      <DialogTrigger asChild>
-        <button className="group">
-          <PlusCircle className="group-hover:opacity-60 transition-all duration-200 ease-in-out" />
-        </button>
+      <DialogTrigger>
+        <PlusCircle className="group-hover:opacity-60 transition-all duration-200 ease-in-out" />
       </DialogTrigger>
       <DialogContent className="bg-slate-900">
         <DialogTitle className="text-center">Novo Produto</DialogTitle>
@@ -30,7 +28,6 @@ function NewProduct() {
             <Input
               value={name}
               onChange={(e) => setName(e.target.value)}
-              className="outline-none bg-slate-700 text-slate-200 placeholder-slate-300"
               id="name"
               placeholder="Ex: Pão Francês"
             />
@@ -40,7 +37,6 @@ function NewProduct() {
             <Input
               value={description}
               onChange={(e) => setDescription(e.target.value)}
-              className="outline-none bg-slate-700 text-slate-200 placeholder-slate-300"
               id="description"
               placeholder="Ex: Pão feito com farinha de trigo"
             />
@@ -50,7 +46,6 @@ function NewProduct() {
             <Input
               value={price}
               onChange={(e) => setPrice(e.target.value)}
-              className="outline-none bg-slate-700 text-slate-200 placeholder-slate-300"
               id="price"
               type="number"
               min={0.1}

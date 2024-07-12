@@ -1,4 +1,4 @@
-import { Product, ProductCreateSchema } from "@/interfaces/products";
+import { Product, ProductSchema } from "@/interfaces/products";
 import api from "@/lib/axios";
 import { AxiosError } from "axios";
 import { createContext, ReactNode, useState } from "react";
@@ -6,7 +6,8 @@ import { toast } from "sonner";
 
 export interface ProductContextProps {
   searchAllProducts: () => void;
-  createNewProduct: (data: ProductCreateSchema) => void;
+  createNewProduct: (data: ProductSchema) => void;
+  updateProduct: (data: Product) => void;
   products: Product[];
   isLoading: boolean;
 }
@@ -36,9 +37,8 @@ export function ProductionContextProvider({
     }
   }
 
-  async function createNewProduct(formData: ProductCreateSchema) {
+  async function createNewProduct(formData: ProductSchema) {
     const price = Number(formData.price);
-    console.log(formData);
     try {
       setIsLoading(true);
       const { data } = await api.post("/products", {
@@ -46,6 +46,26 @@ export function ProductionContextProvider({
         description: formData.description,
         price,
       });
+      searchAllProducts();
+      setIsLoading(false);
+      return toast.success(data.message);
+    } catch (error) {
+      if (error instanceof AxiosError) {
+        setIsLoading(false);
+        return toast.error(error.message);
+      }
+    }
+  }
+
+  async function updateProduct(formData: Product) {
+    try {
+      setIsLoading(true);
+      const { data } = await api.patch(`/products/${formData.id}`, {
+        name: formData.name,
+        description: formData.description,
+        price: formData.price,
+      });
+      searchAllProducts();
       setIsLoading(false);
       return toast.success(data.message);
     } catch (error) {
@@ -58,7 +78,13 @@ export function ProductionContextProvider({
 
   return (
     <ProductContext.Provider
-      value={{ products, isLoading, searchAllProducts, createNewProduct }}
+      value={{
+        products,
+        isLoading,
+        searchAllProducts,
+        updateProduct,
+        createNewProduct,
+      }}
     >
       {children}
     </ProductContext.Provider>
