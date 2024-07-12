@@ -20,7 +20,7 @@ function NewProduct() {
       <DialogTrigger>
         <PlusCircle className="group-hover:opacity-60 transition-all duration-200 ease-in-out" />
       </DialogTrigger>
-      <DialogContent className="bg-slate-900">
+      <DialogContent>
         <DialogTitle className="text-center">Novo Produto</DialogTitle>
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
           <div className="flex flex-col gap-2">

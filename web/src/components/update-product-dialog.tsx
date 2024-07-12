@@ -35,7 +35,7 @@ function UpdateProduct({ data: product, ...props }: UpdateProductProps) {
       <DialogTrigger className="group">
         <Settings2 className="group-hover:opacity-60 transition-all duration-200 ease-in-out" />
       </DialogTrigger>
-      <DialogContent className="bg-slate-900">
+      <DialogContent>
         <DialogTitle className="text-center">Update Product</DialogTitle>
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
           <div className="flex flex-col gap-2">
