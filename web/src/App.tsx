@@ -7,12 +7,14 @@ import {
   Table,
   TableBody,
   TableCell,
+  TableHead,
   TableHeader,
   TableRow,
 } from "./components/ui/table";
 import NewProduct from "./components/new-product-dialog";
 import UpdateProduct from "./components/update-product-dialog";
 import DeleteProduct from "./components/delete-product-dialog";
+import Footer from "./components/footer";
 function App() {
   const { searchAllProducts, products, isLoading } = useProducts();
   useEffect(() => {
@@ -30,12 +32,12 @@ function App() {
             <Table>
               <TableHeader>
                 <TableRow>
-                  <TableCell>ID</TableCell>
-                  <TableCell>Nome</TableCell>
-                  <TableCell>Descrição</TableCell>
-                  <TableCell>Preço</TableCell>
-                  <TableCell>Criado em</TableCell>
-                  <TableCell>Ações</TableCell>
+                  <TableHead>ID</TableHead>
+                  <TableHead>Nome</TableHead>
+                  <TableHead>Descrição</TableHead>
+                  <TableHead>Preço</TableHead>
+                  <TableHead>Criado em</TableHead>
+                  <TableHead>Ações</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
@@ -73,6 +75,7 @@ function App() {
           </div>
         </>
       )}
+      <Footer />
     </div>
   );
 }
