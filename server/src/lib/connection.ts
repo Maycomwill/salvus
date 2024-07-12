@@ -1,3 +1,5 @@
+import { config } from "dotenv";
+config();
 const connection = {
   user: String(process.env.PGUSER),
   password: String(process.env.PGPASSWORD),
