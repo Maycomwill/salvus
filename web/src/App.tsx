@@ -10,9 +10,9 @@ import {
   TableHeader,
   TableRow,
 } from "./components/ui/table";
-import { Trash2 } from "lucide-react";
 import NewProduct from "./components/new-product-dialog";
 import UpdateProduct from "./components/update-product-dialog";
+import DeleteProduct from "./components/delete-product-dialog";
 function App() {
   const { searchAllProducts, products, isLoading } = useProducts();
   useEffect(() => {
@@ -20,7 +20,7 @@ function App() {
   }, []);
   return (
     <div className="h-screen flex flex-col  items-center justify-center pt-24 gap-12">
-      <h1 className="text-4xl font-bold tracking-widest">Prodcut API</h1>
+      <h1 className="text-4xl font-bold tracking-widest">Product API</h1>
       {isLoading ? (
         <Loading />
       ) : (
@@ -62,7 +62,7 @@ function App() {
                         <TableCell>
                           <div className="flex gap-2">
                             <UpdateProduct data={product} />
-                            <Trash2 />
+                            <DeleteProduct id={product.id} />
                           </div>
                         </TableCell>
                       </TableRow>

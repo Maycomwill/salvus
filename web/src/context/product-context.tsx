@@ -8,6 +8,7 @@ export interface ProductContextProps {
   searchAllProducts: () => void;
   createNewProduct: (data: ProductSchema) => void;
   updateProduct: (data: Product) => void;
+  deleteProduct: (id: string) => void;
   products: Product[];
   isLoading: boolean;
 }
@@ -76,6 +77,22 @@ export function ProductionContextProvider({
     }
   }
 
+  async function deleteProduct(id: string) {
+    console.log(id);
+    try {
+      setIsLoading(true);
+      const {data} = await api.delete(`/products/${id}`);
+      searchAllProducts();
+      setIsLoading(false);
+      return toast.success(data.message);
+    } catch (error) {
+      if (error instanceof AxiosError) {
+        setIsLoading(false);
+        return toast.error(error.message);
+      }
+    }
+  }
+
   return (
     <ProductContext.Provider
       value={{
@@ -84,6 +101,7 @@ export function ProductionContextProvider({
         searchAllProducts,
         updateProduct,
         createNewProduct,
+        deleteProduct
       }}
     >
       {children}
