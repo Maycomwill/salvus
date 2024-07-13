@@ -14,12 +14,12 @@ export default async function createNewProduct(req: Request, res: Response) {
   const { name, description, price } = bodySchema.parse(req.body);
   try {
     const id = uuidv4();
+    const new_price = price * 100;
     const created_at = new Date();
-    console.log(created_at);
     const query = {
       name: "create prodcut",
       text: "INSERT INTO products (id, name, description, price, created_at) VALUES ($1, $2, $3, $4, $5)",
-      values: [id, name, description, price, created_at],
+      values: [id, name, description, new_price, created_at],
     };
     pool.query(query, (error, result) => {
       if (error) {
