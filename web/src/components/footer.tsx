@@ -1,6 +1,6 @@
 function Footer() {
   return (
-    <footer className="fixed bottom-0 flex items-center gap-4">
+    <footer className="bg-slate-50 w-full justify-center fixed bottom-0 flex items-center gap-4">
       <img
         loading="lazy"
         src="/logo.svg"
