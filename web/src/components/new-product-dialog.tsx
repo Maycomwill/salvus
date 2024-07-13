@@ -5,6 +5,12 @@ import { Label } from "./ui/label";
 import { Button } from "./ui/button";
 import { FormEvent, useState } from "react";
 import useProducts from "@/hook/useProducts";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "./ui/tooltip";
 
 function NewProduct() {
   const [name, setName] = useState("");
@@ -17,8 +23,19 @@ function NewProduct() {
   }
   return (
     <Dialog>
-      <DialogTrigger>
-        <PlusCircle className="group-hover:opacity-60 transition-all duration-200 ease-in-out" />
+      <DialogTrigger asChild className="group">
+        <button type="button">
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger>
+                <PlusCircle className="transition-all duration-200 ease-in-out group-hover:opacity-60" />
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>Adicionar novo produto</p>
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
+        </button>
       </DialogTrigger>
       <DialogContent>
         <DialogTitle className="text-center">Novo Produto</DialogTitle>

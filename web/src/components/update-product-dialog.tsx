@@ -7,6 +7,12 @@ import { DialogProps } from "@radix-ui/react-dialog";
 import { FormEvent, useState } from "react";
 import { Button } from "./ui/button";
 import useProducts from "@/hook/useProducts";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "./ui/tooltip";
 
 interface UpdateProductProps extends DialogProps {
   data: Product;
@@ -32,8 +38,19 @@ function UpdateProduct({ data: product, ...props }: UpdateProductProps) {
 
   return (
     <Dialog {...props}>
-      <DialogTrigger className="group">
-        <Settings2 className="group-hover:opacity-60 transition-all duration-200 ease-in-out" />
+      <DialogTrigger asChild className="group">
+        <button type="button">
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger>
+                <Settings2 className="transition-all duration-200 ease-in-out group-hover:opacity-60" />
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>Atualizar produto</p>
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
+        </button>
       </DialogTrigger>
       <DialogContent>
         <DialogTitle className="text-center">Update Product</DialogTitle>
