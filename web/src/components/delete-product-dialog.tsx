@@ -12,6 +12,12 @@ import {
 } from "./ui/alert-dialog";
 import { AlertDialogProps } from "@radix-ui/react-alert-dialog";
 import useProducts from "@/hook/useProducts";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "./ui/tooltip";
 
 interface DeleteProductProps extends AlertDialogProps {
   id: string;
@@ -24,8 +30,19 @@ function DeleteProduct({ id, ...props }: DeleteProductProps) {
   }
   return (
     <AlertDialog {...props}>
-      <AlertDialogTrigger className="group">
-        <Trash2 className="group-hover:opacity-60 transition-all duration-200 ease-in-out" />
+      <AlertDialogTrigger asChild className="group">
+        <button type="button">
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger>
+                <Trash2 className="group-hover:text-red-500 transition-all duration-200 ease-in-out text-red-600" />
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>Deletar produto</p>
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
+        </button>
       </AlertDialogTrigger>
       <AlertDialogContent>
         <AlertDialogHeader>

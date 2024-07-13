@@ -23,8 +23,8 @@ function NewProduct() {
   }
   return (
     <Dialog>
-      <DialogTrigger asChild>
-        <button>
+      <DialogTrigger asChild className="group">
+        <button type="button">
           <TooltipProvider>
             <Tooltip>
               <TooltipTrigger>
