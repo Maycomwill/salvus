@@ -78,7 +78,6 @@ export function ProductionContextProvider({
   }
 
   async function deleteProduct(id: string) {
-    console.log(id);
     try {
       setIsLoading(true);
       const {data} = await api.delete(`/products/${id}`);
