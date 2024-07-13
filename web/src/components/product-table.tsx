@@ -23,7 +23,7 @@ function ProductTable() {
     return <Loading />;
   }
   return (
-    <div className="md:px-0 px-4 md:w-2/3 overflow-y-auto max-h-[700px] lg:max-h-[380px]">
+    <div className="max-h-[700px] overflow-y-auto px-4 md:w-2/3 md:px-0 lg:max-h-[380px]">
       <Table>
         <TableHeader>
           <TableRow>

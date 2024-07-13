@@ -14,11 +14,7 @@ export interface ProductContextProps {
 }
 export const ProductContext = createContext({} as ProductContextProps);
 
-export function ProductionContextProvider({
-  children,
-}: {
-  children: ReactNode;
-}) {
+export function ProductContextProvider({ children }: { children: ReactNode }) {
   const [products, setProducts] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -80,7 +76,7 @@ export function ProductionContextProvider({
   async function deleteProduct(id: string) {
     try {
       setIsLoading(true);
-      const {data} = await api.delete(`/products/${id}`);
+      const { data } = await api.delete(`/products/${id}`);
       searchAllProducts();
       setIsLoading(false);
       return toast.success(data.message);
@@ -100,7 +96,7 @@ export function ProductionContextProvider({
         searchAllProducts,
         updateProduct,
         createNewProduct,
-        deleteProduct
+        deleteProduct,
       }}
     >
       {children}

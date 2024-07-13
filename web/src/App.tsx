@@ -3,9 +3,9 @@ import Header from "./components/header";
 import ProductTable from "./components/product-table";
 function App() {
   return (
-    <div className="h-screen flex flex-col items-center justify-start pt-4 md:pt-12 gap-2">
+    <div className="flex h-screen flex-col items-center justify-start gap-2 pt-4 md:pt-12">
       <Header />
-      <main className="w-full flex items-start justify-center flex-1">
+      <main className="flex w-full flex-1 items-start justify-center">
         <ProductTable />
       </main>
       <Footer />

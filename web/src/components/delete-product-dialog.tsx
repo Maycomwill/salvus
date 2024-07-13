@@ -1,4 +1,3 @@
-import { Trash2 } from "lucide-react";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -10,14 +9,15 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "./ui/alert-dialog";
-import { AlertDialogProps } from "@radix-ui/react-alert-dialog";
-import useProducts from "@/hook/useProducts";
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
 } from "./ui/tooltip";
+import { AlertDialogProps } from "@radix-ui/react-alert-dialog";
+import useProducts from "@/hook/useProducts";
+import { Trash2 } from "lucide-react";
 
 interface DeleteProductProps extends AlertDialogProps {
   id: string;
@@ -35,7 +35,7 @@ function DeleteProduct({ id, ...props }: DeleteProductProps) {
           <TooltipProvider>
             <Tooltip>
               <TooltipTrigger>
-                <Trash2 className="group-hover:text-red-500 transition-all duration-200 ease-in-out text-red-600" />
+                <Trash2 className="text-red-600 transition-all duration-200 ease-in-out group-hover:text-red-500" />
               </TooltipTrigger>
               <TooltipContent>
                 <p>Deletar produto</p>

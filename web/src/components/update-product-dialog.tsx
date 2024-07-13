@@ -43,7 +43,7 @@ function UpdateProduct({ data: product, ...props }: UpdateProductProps) {
           <TooltipProvider>
             <Tooltip>
               <TooltipTrigger>
-                <Settings2 className="group-hover:opacity-60 transition-all duration-200 ease-in-out" />
+                <Settings2 className="transition-all duration-200 ease-in-out group-hover:opacity-60" />
               </TooltipTrigger>
               <TooltipContent>
                 <p>Atualizar produto</p>

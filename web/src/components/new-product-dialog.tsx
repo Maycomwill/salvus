@@ -28,7 +28,7 @@ function NewProduct() {
           <TooltipProvider>
             <Tooltip>
               <TooltipTrigger>
-                <PlusCircle className="group-hover:opacity-60 transition-all duration-200 ease-in-out" />
+                <PlusCircle className="transition-all duration-200 ease-in-out group-hover:opacity-60" />
               </TooltipTrigger>
               <TooltipContent>
                 <p>Adicionar novo produto</p>
