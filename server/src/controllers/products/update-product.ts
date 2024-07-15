@@ -17,10 +17,11 @@ export default async function updateProduct(req: Request, res: Response) {
   const { id } = paramSchema.parse(req.params);
   try {
     console.log(name, description, price);
+    const new_price = price && price * 100;
     const query = {
       name: "update prodcut",
       text: "UPDATE products SET name = $2, description = $3, price = $4 WHERE id = $1",
-      values: [id, name, description, price],
+      values: [id, name, description, new_price],
     };
     pool.query(query, (error, result) => {
       if (error) {
