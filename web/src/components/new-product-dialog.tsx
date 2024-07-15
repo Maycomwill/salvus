@@ -1,4 +1,10 @@
-import { Dialog, DialogContent, DialogTitle, DialogTrigger } from "./ui/dialog";
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogTitle,
+  DialogTrigger,
+} from "./ui/dialog";
 import { PlusCircle } from "lucide-react";
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
@@ -20,6 +26,9 @@ function NewProduct() {
   function handleSubmit(e: FormEvent) {
     e.preventDefault();
     createNewProduct({ name, description, price });
+    setName("");
+    setDescription("");
+    setPrice("");
   }
   return (
     <Dialog>
@@ -65,15 +74,16 @@ function NewProduct() {
               onChange={(e) => setPrice(e.target.value)}
               id="price"
               type="number"
-              min={0.1}
+              min={0.01}
               step={0.01}
-              placeholder="Ex: 22.42"
             />
           </div>
           <div className="mx-auto">
-            <Button type="submit" variant="default">
-              Criar
-            </Button>
+            <DialogClose asChild>
+              <Button type="submit" variant="default">
+                Criar
+              </Button>
+            </DialogClose>
           </div>
         </form>
       </DialogContent>

@@ -11,3 +11,11 @@ export interface ProductSchema {
   description: string;
   price: string;
 }
+
+export interface UpdateProductSchema {
+  id: string;
+  name: string;
+  description: string;
+  price: string;
+  created_at: string;
+}

@@ -1,4 +1,8 @@
-import { Product, ProductSchema } from "@/interfaces/products";
+import {
+  Product,
+  ProductSchema,
+  UpdateProductSchema,
+} from "@/interfaces/products";
 import api from "@/lib/axios";
 import { AxiosError } from "axios";
 import { createContext, ReactNode, useState } from "react";
@@ -7,7 +11,7 @@ import { toast } from "sonner";
 export interface ProductContextProps {
   searchAllProducts: () => void;
   createNewProduct: (data: ProductSchema) => void;
-  updateProduct: (data: Product) => void;
+  updateProduct: (data: UpdateProductSchema) => void;
   deleteProduct: (id: string) => void;
   products: Product[];
   isLoading: boolean;
@@ -54,13 +58,13 @@ export function ProductContextProvider({ children }: { children: ReactNode }) {
     }
   }
 
-  async function updateProduct(formData: Product) {
+  async function updateProduct(formData: UpdateProductSchema) {
     try {
       setIsLoading(true);
       const { data } = await api.patch(`/products/${formData.id}`, {
         name: formData.name,
         description: formData.description,
-        price: formData.price,
+        price: Number(formData.price),
       });
       searchAllProducts();
       setIsLoading(false);

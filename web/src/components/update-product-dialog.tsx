@@ -2,7 +2,7 @@ import { Settings2 } from "lucide-react";
 import { Dialog, DialogContent, DialogTitle, DialogTrigger } from "./ui/dialog";
 import { Label } from "./ui/label";
 import { Input } from "./ui/input";
-import { Product } from "@/interfaces/products";
+import { UpdateProductSchema } from "@/interfaces/products";
 import { DialogProps } from "@radix-ui/react-dialog";
 import { FormEvent, useState } from "react";
 import { Button } from "./ui/button";
@@ -15,7 +15,7 @@ import {
 } from "./ui/tooltip";
 
 interface UpdateProductProps extends DialogProps {
-  data: Product;
+  data: UpdateProductSchema;
 }
 
 function UpdateProduct({ data: product, ...props }: UpdateProductProps) {
@@ -24,13 +24,14 @@ function UpdateProduct({ data: product, ...props }: UpdateProductProps) {
   const [price, setPrice] = useState(product.price);
   const { updateProduct } = useProducts();
 
+  console.log(product.price)
+
   function handleSubmit(e: FormEvent) {
     e.preventDefault();
-
     updateProduct({
       name,
       description,
-      price: Number(price),
+      price,
       id: product.id,
       created_at: product.created_at,
     });
@@ -78,12 +79,12 @@ function UpdateProduct({ data: product, ...props }: UpdateProductProps) {
           <div className="flex flex-col gap-2">
             <Label htmlFor="price">Preço</Label>
             <Input
-              onChange={(e) => setPrice(Number(e.target.value))}
+              onChange={(e) => setPrice(e.target.value)}
               value={price}
               id="price"
               placeholder="Ex: 1.50"
               type="number"
-              min={0.1}
+              min={0.01}
               step={0.01}
             />
           </div>

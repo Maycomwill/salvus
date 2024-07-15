@@ -57,7 +57,15 @@ function ProductTable() {
                   </TableCell>
                   <TableCell>
                     <div className="flex gap-2">
-                      <UpdateProduct data={product} />
+                      <UpdateProduct
+                        data={{
+                          id: product.id,
+                          created_at: product.created_at,
+                          name: product.name,
+                          description: product.description,
+                          price: String(product.price / 100),
+                        }}
+                      />
                       <DeleteProduct id={product.id} />
                     </div>
                   </TableCell>
